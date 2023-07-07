@@ -14,15 +14,23 @@ const client = new CognitoIdentityProviderClient({
 })
 
 async function signup(credentials) {
-	const { username, password, email } = credentials
+	const { Username, Password, UserAttributes } = credentials
 	const command = new SignUpCommand({
 		ClientId: networkConventionsService.CognitoFinals.AWS_COMPANY_CLIENT_ID,
-		Username: username,
-		Password: password,
+		Username,
+		Password,
 		UserAttributes: [
 			{
 				Name: 'email',
-				Value: username,
+				Value: UserAttributes[0].Value,
+			},
+			{
+				Name: 'given_name',
+				Value: UserAttributes[1].Value,
+			},
+			{
+				Name: 'family_name',
+				Value: UserAttributes[2].Value,
 			},
 		],
 	})

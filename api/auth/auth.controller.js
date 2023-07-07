@@ -13,15 +13,6 @@ async function signup(req, res) {
 	}
 }
 
-// signup(
-// 	{ body: { credentials: { username: 'user@gmail.com', password: 'test123@' } } },
-// 	{
-// 		status: () => {
-// 			return { send: () => {} }
-// 		},
-// 	}
-// )
-
 module.exports = {
 	signup,
 }
